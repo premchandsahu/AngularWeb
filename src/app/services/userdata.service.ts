@@ -6,7 +6,8 @@ import { HttpClient } from '@angular/common/http'
 export class UserdataService {
 
   constructor(private http: HttpClient) { }
-  url = "http://localhost:8000/";
+  //url = "http://localhost:8000/";
+  url="https://angularproject-b5ny.onrender.com/";
   users() {
     return this.http.get(this.url + "todos")
   }
