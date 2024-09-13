@@ -13,7 +13,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './MyComponent/login/login.component';
 import { HeaderComponent } from './MyComponent/header/header.component'
 import {ToastrModule} from 'ngx-toastr';
-import { ListingComponent } from './MyComponent/listing/listing.component'
+import { ListingComponent } from './MyComponent/listing/listing.component';
+import { ProductComponent } from './MyComponent/product/product.component';
+import { ProductlistingComponent } from './MyComponent/productlisting/productlisting.component'
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { ListingComponent } from './MyComponent/listing/listing.component'
     ProductcategoryComponent,
     LoginComponent,
     HeaderComponent,
-    ListingComponent
+    ListingComponent,
+    ProductComponent,
+    ProductlistingComponent
   ],
   imports: [
     BrowserModule,

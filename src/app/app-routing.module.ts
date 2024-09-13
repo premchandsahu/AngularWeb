@@ -6,6 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { BillingComponent } from './MyComponent/billing/billing.component';
 import { ProductcategoryComponent } from './MyComponent/productcategory/productcategory.component';
 import { ListingComponent } from './MyComponent/listing/listing.component';
+import { ProductlistingComponent } from './MyComponent/productlisting/productlisting.component';
 
 const routes: Routes = [
   {
@@ -27,6 +28,11 @@ const routes: Routes = [
   {
     path: 'productcategory',
     component: ProductcategoryComponent
+  }
+  ,
+  {
+    path: 'product',
+    component: ProductlistingComponent
   },
   {
     path: '',
