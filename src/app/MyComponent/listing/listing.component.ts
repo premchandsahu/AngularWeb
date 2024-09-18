@@ -17,11 +17,12 @@ ngOnInit(): void {
   this.loadInvoice();
 }
 loadInvoice(){
-  this.userdata.invoice().subscribe((res) => {
+  this.userdata.invoicesummary().subscribe((res) => {
   
     this.Invoiceheader = res;
+    console.log(this.Invoiceheader)
   })
-  console.log(this.loadInvoice);
+  //console.log(this.Invoiceheader);
 }
 Editinvoice(invoiceno:number){
   this.router.navigateByUrl('/editbilling/' + invoiceno);

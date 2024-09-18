@@ -10,7 +10,7 @@ export class TodosComponent {
 users:any;
 constructor(private userdata:UserdataService){
     this.userdata.users().subscribe((data)=>{
-       console.warn("data",data)
+      // console.warn("data",data)
        this.users = data; 
     });
 }

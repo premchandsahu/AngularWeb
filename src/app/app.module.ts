@@ -15,8 +15,10 @@ import { HeaderComponent } from './MyComponent/header/header.component'
 import {ToastrModule} from 'ngx-toastr';
 import { ListingComponent } from './MyComponent/listing/listing.component';
 import { ProductComponent } from './MyComponent/product/product.component';
-import { ProductlistingComponent } from './MyComponent/productlisting/productlisting.component'
-
+import { ProductlistingComponent } from './MyComponent/productlisting/productlisting.component';
+import { CustomerlistingComponent } from './MyComponent/customerlisting/customerlisting.component';
+import { CustomerComponent } from './MyComponent/customer/customer.component'
+import { NgSelectModule } from '@ng-select/ng-select';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +31,9 @@ import { ProductlistingComponent } from './MyComponent/productlisting/productlis
     HeaderComponent,
     ListingComponent,
     ProductComponent,
-    ProductlistingComponent
+    ProductlistingComponent,
+    CustomerlistingComponent,
+    CustomerComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +41,8 @@ import { ProductlistingComponent } from './MyComponent/productlisting/productlis
     FormsModule,
     ReactiveFormsModule,
     ToastrModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgSelectModule
   ],
   providers: [provideHttpClient()],
   bootstrap: [AppComponent]

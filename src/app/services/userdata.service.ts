@@ -6,8 +6,8 @@ import { HttpClient } from '@angular/common/http'
 export class UserdataService {
 
   constructor(private http: HttpClient) { }
-  //url = "http://localhost:8000/";
-  url="https://angularproject-b5ny.onrender.com/";
+  url = "http://localhost:8000/";
+  //url="https://angularproject-b5ny.onrender.com/";
   users() {
     return this.http.get(this.url + "todos")
   }
@@ -29,6 +29,17 @@ export class UserdataService {
   customerbyID(ID: number) {
     return this.http.get(this.url + "customer/" + ID)
   }
+  savecustomer(data: any) {
+
+    if (data.custno === "" || data.custno === null) {
+      console.log("Empty")
+      return this.http.post(this.url + "customer", data)
+    }
+    else
+      return this.http.put(this.url + "customer/" + data.custno, data)
+  }
+
+
   cusstomeradd(data: any) {
     return this.http.post(this.url + "customer", data)
   }
@@ -53,10 +64,24 @@ export class UserdataService {
   productdelete(data: any) {
     return this.http.delete(this.url + "product", data)
   }
+  saveproduct(data: any) {
+
+    if (data.productno === "" || data.productno === null) {
+      console.log("Empty")
+      return this.http.post(this.url + "product", data)
+    }
+    else
+      return this.http.put(this.url + "product/" + data.productno, data)
+  }
+
+
   invoice() {
     return this.http.get(this.url + "invoice")
   }
   invoicebyID(invoiceno: any) {
+    return this.http.get(this.url + "invoice/"+invoiceno)
+  }
+  invoiceItembyID(invoiceno: any) {
     return this.http.get(this.url + "invoice/"+invoiceno)
   }
   invoicebyIDHeader(invoiceno: any) {
@@ -77,5 +102,7 @@ export class UserdataService {
   invoicedelete(data: any) {
     return this.http.delete(this.url + "invoice", data)
   }
-
+  invoicesummary() {
+    return this.http.get(this.url + "invoicesummary")
+  }
 }

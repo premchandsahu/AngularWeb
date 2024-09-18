@@ -8,20 +8,24 @@ import { Router } from '@angular/router';
   styleUrl: './productlisting.component.css'
 })
 export class ProductlistingComponent {
-  constructor(private userdata: UserdataService,private router: Router){
-
-
-  }
+  constructor(private userdata: UserdataService,private router: Router){  }
   ngOnInit(): void {
-    this.loadInvoice();
+    this.loadProduct();
   }
-  loadInvoice(){
+  productlisting: any;
+  loadProduct(){
     
+    this.userdata.product().subscribe((res) => {
+  
+      this.productlisting = res;
+    })
+    console.log(this.productlisting);
+
+
   }
-productlisting: any;
-
+  
 Editproduct(productno:any){
-
+  this.router.navigateByUrl('/editproduct/' + productno);
 }
 productremove(productno:any){
 

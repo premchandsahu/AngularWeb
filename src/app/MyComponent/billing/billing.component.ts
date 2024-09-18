@@ -15,9 +15,9 @@ export class BillingComponent implements OnInit {
   constructor(private userdata: UserdataService, private alert: ToastrService, private router: Router, private activeroute: ActivatedRoute) { }
   private formBuilder = inject(FormBuilder);
   invoiceform = this.formBuilder.group({
-    invoiceno: this.formBuilder.control({value: '', disabled: true }),
-    invoicedate: this.formBuilder.control(new Date(), Validators.required), 
-    custno: this.formBuilder.control('',  Validators.required),
+    invoiceno: this.formBuilder.control({ value: '', disabled: true }),
+    invoicedate: this.formBuilder.control(new Date(), Validators.required),
+    custno: this.formBuilder.control('', Validators.required),
     remarks: this.formBuilder.control('', Validators.required),
     details: this.formBuilder.array([]),
     total: this.formBuilder.control(''),
@@ -47,28 +47,7 @@ export class BillingComponent implements OnInit {
     }
   }
 
-  SetEditInfo(invoiceno: any) {
-    this.userdata.invoicebyID(invoiceno).subscribe(res => {
-      this.editinvdetail = res;
-      for (let i = 0; i < this.editinvdetail[0].details.length; i++) {
-        this.addnewproduct();
-      };
-    });
 
-    this.userdata.invoicebyID(invoiceno).subscribe(res => {
-      let editdata: any;
-
-      editdata = res;
-      console.log(editdata)
-      if (this.editinvdetail != null) {
-        this.invoiceform.setValue({
-          invoiceno: editdata[0].invoiceno, invoicedate: editdata[0].invoicedate, custno: editdata[0].custno,
-          remarks: editdata[0].remarks,
-          total: editdata[0].total, tax: editdata[0].total, netTotal: editdata[0].total, details: editdata[0].details
-        })
-      }
-    });
-  }
 
   GetCustomers() {
     this.userdata.customer().subscribe((res) => {
@@ -91,6 +70,7 @@ export class BillingComponent implements OnInit {
       this.userdata.saveinvoice(this.invoiceform.getRawValue()).subscribe((res: any) => {
         let result: any;
         result = res;
+        console.log("return")
         console.log(result)
         console.log(result.result);
         if (result.result == 'pass') {
@@ -111,6 +91,11 @@ export class BillingComponent implements OnInit {
   customerchange() {
     let custno = Number(this.invoiceform.get("custno")?.value);
     console.log(custno);
+    //   if (custno
+    if (custno === 0 || custno === null) {
+      this.invoiceproduct.get("productrate")?.setValue(0);
+      return;
+    }
     this.userdata.customerbyID(custno).subscribe((res: any) => {
       let custdata: any;
       custdata = res;
@@ -150,7 +135,40 @@ export class BillingComponent implements OnInit {
     this.invoiceform.get("tax")?.setValue(String(sumtax));
     this.invoiceform.get("netTotal")?.setValue(String(nettotal));
   }
+  async SetEditInfo(invoiceno: any) {
+    this.userdata.invoiceItembyID(invoiceno).subscribe(res => {
+      this.editinvdetail = res;
+      for (let i = 0; i < this.editinvdetail[0].details.length; i++) {
+        this.addnewproduct();
+      };
+    });
 
+    await this.userdata.invoicebyID(invoiceno).subscribe(res => {
+      let editdata: any;
+
+      editdata = res;
+      console.log("Master")
+      console.log(editdata[0])
+      console.log("details")
+      console.log(editdata[0].details)
+      if (this.editinvdetail != null) {
+        this.invoiceform.setValue({
+          invoiceno: editdata[0].invoiceno, invoicedate: editdata[0].invoicedate, custno: editdata[0].custno,
+          remarks: editdata[0].remarks, details: this.editinvdetail[0].details,
+          total: editdata[0].total, tax: editdata[0].total, netTotal: editdata[0].total
+        }, {
+          onlySelf: true,
+          emitEvent: false
+        })
+
+      }
+      console.log("Invoice form data")
+      console.log(this.invoiceform.value);
+    });
+
+    // this.invoiceform
+
+  }
   addnewproduct() {
     this.invoicedetail = this.invoiceform.get("details") as FormArray;
 
@@ -164,7 +182,7 @@ export class BillingComponent implements OnInit {
   }
   Generaterow() {
     return this.formBuilder.group({
-      invoiceno: this.formBuilder.control(''),
+      _id: this.formBuilder.control(''), //Validators.required),
       productno: this.formBuilder.control(''), //Validators.required),
       productqty: this.formBuilder.control(1),
       productrate: this.formBuilder.control(0),
@@ -185,6 +203,10 @@ export class BillingComponent implements OnInit {
     this.invoicedetail = this.invoiceform.get("details") as FormArray;
     this.invoiceproduct = this.invoicedetail.at(index) as FormGroup;
     let productcode = this.invoiceproduct.get("productno")?.value;
+    if (productcode === "" || productcode === null) {
+      this.invoiceproduct.get("productrate")?.setValue(0);
+      return;
+    }
     this.userdata.productbyID(productcode).subscribe((res: any) => {
       let proddata: any;
       proddata = res;

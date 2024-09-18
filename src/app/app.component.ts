@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { UserdataService } from './services/userdata.service'
+declare let $: any;
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -8,8 +10,11 @@ import { UserdataService } from './services/userdata.service'
 export class AppComponent {
   title = 'cwh-todo-list';
   users:any;
+
   constructor(private userdata: UserdataService) {
-    console.warn("user data", userdata.users);
     this.users=userdata.users();
+  }
+  ngOnInit(){
+   
   }
 }

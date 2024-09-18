@@ -1,7 +1,7 @@
 <div class="card" style="width: 1200px">
-    <h3>Listing Product</h3>
+    <h3>Listing Customer</h3>
     <div class="card-header">
-        <a class="btn btn-success" routerLink="/product">Create New [+]</a>
+        <a class="btn btn-success" routerLink="/customer">Create New [+]</a>
     </div>
     <div class="card-body">
 
@@ -9,19 +9,19 @@
         <table datatable class="table table-bordered">
             <thead class="bg-dark text-white">
                 <tr>
-                    <td>Product No</td>
+                    <td>Customer No</td>
                     <td>Name</td>
-                    <td>Category</td>
+                  
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let item of productlisting">
-                    <td>{{item.productno}}</td>
-                    <td>{{item.name}}</td>
+                <tr *ngFor="let item of customerlisting">
+                    <td>{{item.custno}}</td>
+                    <td>{{item.customername}}</td>
 
                     <td style="width: 30%">
-                        <a class="btn btn-primary" (click)="Editproduct(item.productno)">Edit</a> |
-                        <a class="btn btn-danger" (click)="productremove(item.productno)">Delete</a> |
+                        <a class="btn btn-primary" (click)="Editcustomer(item.custno)">Edit</a> |
+                        <a class="btn btn-danger" (click)="customerremove(item.custno)">Delete</a> |
 
                     </td>
 

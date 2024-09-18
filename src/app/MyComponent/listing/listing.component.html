@@ -10,11 +10,10 @@
             <thead class="bg-dark text-white">
                 <tr>
                     <td>Invoice No</td>
-                    <td>Customer</td>
-                    <td>Remarks</td>
+                    <td>Date</td>
+                    <td>Customer Name</td>
                     <td>Total</td>
-                    <td>Tax</td>
-                    <td>NetTotal</td>
+                  
                     <td>Action</td>
                 </tr>
             </thead>
@@ -22,6 +21,8 @@
 <tr *ngFor="let item of Invoiceheader">
     <td>{{item.invoiceno}}</td>
     <td>{{item.invoicedate}}</td>
+    <td>{{item.customers[0].customername}}</td>
+    <td>{{item.total}}</td>
 <!--    <td>{{item.remarks}}</td>
     <td>{{item.total | currency}}</td>
     <td>{{item.tax | currency}}</td>

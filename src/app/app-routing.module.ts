@@ -7,6 +7,9 @@ import { BillingComponent } from './MyComponent/billing/billing.component';
 import { ProductcategoryComponent } from './MyComponent/productcategory/productcategory.component';
 import { ListingComponent } from './MyComponent/listing/listing.component';
 import { ProductlistingComponent } from './MyComponent/productlisting/productlisting.component';
+import { ProductComponent } from './MyComponent/product/product.component';
+import { CustomerlistingComponent } from './MyComponent/customerlisting/customerlisting.component';
+import { CustomerComponent } from './MyComponent/customer/customer.component';
 
 const routes: Routes = [
   {
@@ -31,8 +34,30 @@ const routes: Routes = [
   }
   ,
   {
-    path: 'product',
+    path: 'productlisting',
     component: ProductlistingComponent
+  },
+  {
+    path: 'product',
+    component: ProductComponent
+  },
+  
+  {
+    path: 'editproduct/:productno',
+    component: ProductComponent
+  },
+  {
+    path: 'customerlisting',
+    component: CustomerlistingComponent
+  },
+  {
+    path: 'customer',
+    component: CustomerComponent
+  },
+  
+  {
+    path: 'editcustomer/:custno',
+    component: CustomerComponent
   },
   {
     path: '',
