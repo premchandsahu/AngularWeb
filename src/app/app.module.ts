@@ -19,6 +19,8 @@ import { ProductlistingComponent } from './MyComponent/productlisting/productlis
 import { CustomerlistingComponent } from './MyComponent/customerlisting/customerlisting.component';
 import { CustomerComponent } from './MyComponent/customer/customer.component'
 import { NgSelectModule } from '@ng-select/ng-select';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,7 +44,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
     ReactiveFormsModule,
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
-    NgSelectModule
+    NgSelectModule,
+    
   ],
   providers: [provideHttpClient()],
   bootstrap: [AppComponent]

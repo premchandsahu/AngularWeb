@@ -2,6 +2,9 @@
     <h3>Listing Invoice</h3>
     <div class="card-header">
         <a class="btn btn-success" routerLink="/billing">Create New [+]</a>
+        From Date : <input type="date" [(ngModel)]="fromdate" placeholder="yyyy-M-d">
+        To Date : <input type="date" [(ngModel)]="todate"  placeholder="yyyy-M-d">
+        <a class="btn btn-primary" (click)="loadInvoice(fromdate,todate)">Go</a>
     </div>
     <div class="card-body">
 
@@ -34,6 +37,14 @@
 <a class="btn btn-success" (click)="DownloadInvoice(item.invoiceno)">Download</a>
     </td>
 
+</tr>
+<tr>
+    <td>Total </td>
+    <td>{{cnttotal}}</td>
+    <td></td>
+    <td>{{sumtotal}}</td>
+  
+    <td></td>
 </tr>
             </tbody>
 

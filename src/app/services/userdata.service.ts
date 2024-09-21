@@ -100,9 +100,10 @@ export class UserdataService {
     return this.http.put(this.url + "invoice/" + data.invoiceno, data)
   }
   invoicedelete(data: any) {
-    return this.http.delete(this.url + "invoice", data)
+    return this.http.delete(this.url + "invoice/"+ data)
   }
-  invoicesummary() {
-    return this.http.get(this.url + "invoicesummary")
+  invoicesummary(paramdata:any) {
+    console.log(paramdata)
+    return this.http.post(this.url + "invoicesummary",paramdata)
   }
 }
