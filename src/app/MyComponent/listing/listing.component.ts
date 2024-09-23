@@ -25,7 +25,8 @@ constructor(private userdata: UserdataService,private router: Router,private ale
 //dtoptions: DataTables.Settings = {};
 Invoiceheader: any;
 sumtotal: number=0;
-cnttotal: number=0
+cnttotal: number=0;
+sumtotalp: number=0;
 ngOnInit(): void {
  
   this.loadInvoice(this.fromdate,this.todate);
@@ -41,9 +42,11 @@ loadInvoice(fromdate:Date,todate:Date){
     this.Invoiceheader = res;
     this.cnttotal=0
     this.sumtotal=0
+    this.sumtotalp=0
     this.Invoiceheader.forEach((x: any) => {
       this.cnttotal=this.cnttotal+1;
-      this.sumtotal = this.sumtotal + x.total;
+      this.sumtotal = this.sumtotal + x.totalSAmount;
+      this.sumtotalp = this.sumtotalp + x.totalPAmount;
     });
   })
   console.log(this.Invoiceheader);

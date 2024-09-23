@@ -104,6 +104,7 @@ export class UserdataService {
   }
   invoicesummary(paramdata:any) {
     console.log(paramdata)
-    return this.http.post(this.url + "invoicesummary",paramdata)
+    return this.http.post(this.url + "invoicedprofitsummary",paramdata)
+    //return this.http.post(this.url + "invoicesummary",paramdata)
   }
 }
