@@ -14,12 +14,7 @@ declare let $: any;
 export class ProductComponent {
 
   constructor(private userdata: UserdataService, private alert: ToastrService, private router: Router, private activeroute: ActivatedRoute) { }
-  cities: any[] = [
-		{ id: 1, name: 'Vilnius' },
-		{ id: 2, name: 'Kaunas' },
-		{ id: 3, name: 'Pavilnys (Disabled)', disabled: true },
-		{ id: 4, name: 'Pabradė' },
-	];
+  
   pagetitle: string="Product Details";
   
   

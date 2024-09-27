@@ -19,6 +19,12 @@ import { ProductlistingComponent } from './MyComponent/productlisting/productlis
 import { CustomerlistingComponent } from './MyComponent/customerlisting/customerlisting.component';
 import { CustomerComponent } from './MyComponent/customer/customer.component'
 import { NgSelectModule } from '@ng-select/ng-select';
+import { ReceiptComponent } from './MyComponent/receipt/receipt.component';
+import { ReceiptlistingComponent } from './MyComponent/receiptlisting/receiptlisting.component';
+import { PurchaselistingComponent } from './MyComponent/purchaselisting/purchaselisting.component';
+import { PurchaseComponent } from './MyComponent/purchase/purchase.component';
+import { SupplierlistingComponent } from './MyComponent/supplierlisting/supplierlisting.component';
+import { SupplierComponent } from './MyComponent/supplier/supplier.component';
 
 
 @NgModule({
@@ -35,7 +41,13 @@ import { NgSelectModule } from '@ng-select/ng-select';
     ProductComponent,
     ProductlistingComponent,
     CustomerlistingComponent,
-    CustomerComponent
+    CustomerComponent,
+    ReceiptComponent,
+    ReceiptlistingComponent,
+    PurchaselistingComponent,
+    PurchaseComponent,
+    SupplierlistingComponent,
+    SupplierComponent
   ],
   imports: [
     BrowserModule,

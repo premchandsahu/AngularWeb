@@ -27,6 +27,8 @@ Invoiceheader: any;
 sumtotal: number=0;
 cnttotal: number=0;
 sumtotalp: number=0;
+profit: number=0;
+
 ngOnInit(): void {
  
   this.loadInvoice(this.fromdate,this.todate);
@@ -48,6 +50,7 @@ loadInvoice(fromdate:Date,todate:Date){
       this.sumtotal = this.sumtotal + x.totalSAmount;
       this.sumtotalp = this.sumtotalp + x.totalPAmount;
     });
+    this.profit=this.sumtotal-this.sumtotalp
   })
   console.log(this.Invoiceheader);
 }

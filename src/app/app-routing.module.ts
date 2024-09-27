@@ -10,6 +10,12 @@ import { ProductlistingComponent } from './MyComponent/productlisting/productlis
 import { ProductComponent } from './MyComponent/product/product.component';
 import { CustomerlistingComponent } from './MyComponent/customerlisting/customerlisting.component';
 import { CustomerComponent } from './MyComponent/customer/customer.component';
+import { ReceiptComponent } from './MyComponent/receipt/receipt.component';
+import { ReceiptlistingComponent } from './MyComponent/receiptlisting/receiptlisting.component';
+import { PurchaselistingComponent } from './MyComponent/purchaselisting/purchaselisting.component';
+import { PurchaseComponent } from './MyComponent/purchase/purchase.component';
+import { SupplierlistingComponent } from './MyComponent/supplierlisting/supplierlisting.component';
+import { SupplierComponent } from './MyComponent/supplier/supplier.component';
 
 const routes: Routes = [
   {
@@ -29,6 +35,18 @@ const routes: Routes = [
     component: BillingComponent
   },
   {
+    path: 'purchaselisting',
+    component: PurchaselistingComponent
+  },
+  {
+    path: 'purchase',
+    component: PurchaseComponent
+  },
+  {
+    path: 'editpurchase/:purchaseno',
+    component: PurchaseComponent
+  },
+  {
     path: 'productcategory',
     component: ProductcategoryComponent
   }
@@ -41,10 +59,21 @@ const routes: Routes = [
     path: 'product',
     component: ProductComponent
   },
-  
+  {
+    path: 'receipt',
+    component: ProductComponent
+  },
   {
     path: 'editproduct/:productno',
     component: ProductComponent
+  },
+    {
+    path: 'editreceipt/:receiptno',
+    component: ReceiptComponent
+  },
+  {
+    path: 'receiptlisting',
+    component: ReceiptlistingComponent
   },
   {
     path: 'customerlisting',
@@ -54,10 +83,21 @@ const routes: Routes = [
     path: 'customer',
     component: CustomerComponent
   },
-  
-  {
+    {
     path: 'editcustomer/:custno',
     component: CustomerComponent
+  },
+  {
+    path: 'supplierlisting',
+    component: SupplierlistingComponent
+  },
+  {
+    path: 'supplier',
+    component: SupplierComponent
+  },
+    {
+    path: 'editsupplier/:supplierno',
+    component: SupplierComponent
   },
   {
     path: '',
