@@ -7,7 +7,7 @@ export class UserdataService {
 
   constructor(private http: HttpClient) { }
   url = "http://localhost:8000/";
-  //url="https://angularproject-b5ny.onrender.com/";
+//url="https://angularproject-b5ny.onrender.com/";
   users() {
     return this.http.get(this.url + "todos")
   }
@@ -143,7 +143,7 @@ export class UserdataService {
   }
   savesupplier(data: any) {
 
-    if (data.custno === "" || data.custno === null) {
+    if (data.supplierno === "" || data.supplierno === null) {
       console.log("Empty")
       return this.http.post(this.url + "supplier", data)
     }
