@@ -3,13 +3,19 @@
     <div class="card-header">
         <a class="btn btn-success" routerLink="/billing">Create New [+]</a>
         From Date : <input type="date" [(ngModel)]="fromdate" placeholder="yyyy-M-d">
-        To Date : <input type="date" [(ngModel)]="todate"  placeholder="yyyy-M-d">
-        <a class="btn btn-primary" (click)="loadInvoice(fromdate,todate)">Go</a>
+        To Date : <input type="date" [(ngModel)]="todate" placeholder="yyyy-M-d">
+        <div class="form-group">
+        <label>Customer</label>
+        <ng-select [items]="mastercustomer" [clearable]="false" bindLabel="customername" bindValue="custno"
+            clearAllText="Clear" [(ngModel)]="custno"  >
+        </ng-select>
+    </div>
+        <a class="btn btn-primary" (click)="loadInvoice(fromdate,todate,custno)">Go</a>
     </div>
     <div class="card-body">
 
-    <!--    <table datatable [dtOptions]="dtoptions" [dtTrigger]="dtTrigger" class="table table-bordered"> -->
-        <table datatable  class="table table-bordered">
+        <!--    <table datatable [dtOptions]="dtoptions" [dtTrigger]="dtTrigger" class="table table-bordered"> -->
+        <table datatable class="table table-bordered">
             <thead class="bg-dark text-white">
                 <tr>
                     <td>Invoice No</td>
@@ -21,34 +27,34 @@
                 </tr>
             </thead>
             <tbody>
-<tr *ngFor="let item of Invoiceheader">
-    <td>{{item._id.invoiceno}}</td>
-    <td>{{item._id.invoicedate}}</td>
-    <td>{{item._id.customername}}</td>
-    <td>{{item.totalSAmount}}</td>
-    <td>{{item.totalPAmount}}</td>
-    
-<!--    <td>{{item.remarks}}</td>
+                <tr *ngFor="let item of Invoiceheader">
+                    <td>{{item._id.invoiceno}}</td>
+                    <td>{{item._id.invoicedate}}</td>
+                    <td>{{item._id.customername}}</td>
+                    <td>{{item.totalSAmount}}</td>
+                    <td>{{item.totalPAmount}}</td>
+
+                    <!--    <td>{{item.remarks}}</td>
     <td>{{item.total | currency}}</td>
     <td>{{item.tax | currency}}</td>
     <td>{{item.netTotal | currency}}</td> -->
-    <td style="width: 30%">
-<a class="btn btn-primary" (click)="Editinvoice(item._id.invoiceno)">Edit</a> | 
-<a class="btn btn-danger" (click)="invoiceremove(item._id.invoiceno)">Delete</a> |
-<a class="btn btn-success" (click)="PreviewInvoice(item.invoiceno)">Print</a> |
-<a class="btn btn-success" (click)="DownloadInvoice(item.invoiceno)">Download</a>
-    </td>
+                    <td style="width: 30%">
+                        <a class="btn btn-primary" (click)="Editinvoice(item._id.invoiceno)">Edit</a> |
+                        <a class="btn btn-danger" (click)="invoiceremove(item._id.invoiceno)">Delete</a> |
+                        <a class="btn btn-success" (click)="PreviewInvoice(item.invoiceno)">Print</a> |
+                        <a class="btn btn-success" (click)="DownloadInvoice(item.invoiceno)">Download</a>
+                    </td>
 
-</tr>
-<tr>
-    <td>Total </td>
-    <td>{{cnttotal}}</td>
-    <td></td>
-    <td>{{sumtotal}}</td>
-   
-    <td> {{sumtotalp}}</td>
-    <td>{{profit}}</td>
-</tr>
+                </tr>
+                <tr>
+                    <td>Total </td>
+                    <td>{{cnttotal}}</td>
+                    <td></td>
+                    <td>{{sumtotal}}</td>
+
+                    <td> {{sumtotalp}}</td>
+                    <td>{{profit}}</td>
+                </tr>
             </tbody>
 
         </table>

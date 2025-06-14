@@ -16,6 +16,7 @@ import { PurchaselistingComponent } from './MyComponent/purchaselisting/purchase
 import { PurchaseComponent } from './MyComponent/purchase/purchase.component';
 import { SupplierlistingComponent } from './MyComponent/supplierlisting/supplierlisting.component';
 import { SupplierComponent } from './MyComponent/supplier/supplier.component';
+import { GridtestComponent } from './MyComponent/gridtest/gridtest.component';
 
 const routes: Routes = [
   {
@@ -61,7 +62,7 @@ const routes: Routes = [
   },
   {
     path: 'receipt',
-    component: ProductComponent
+    component: ReceiptComponent
   },
   {
     path: 'editproduct/:productno',

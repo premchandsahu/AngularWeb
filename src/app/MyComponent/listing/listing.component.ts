@@ -14,8 +14,8 @@ export class ListingComponent implements OnInit{
   vtodate: Date= new Date(Date.now());;
   fromdate: Date= new Date(this.vfromdate.getFullYear(),this.vfromdate.getMonth(),this.vfromdate.getDate());
   todate: Date= new Date(Date.now());
-  
-  
+  mastercustomer:any;
+  custno: any;
 
 constructor(private userdata: UserdataService,private router: Router,private alert: ToastrService,){
   fromdate: new Date(Date.now());
@@ -30,12 +30,20 @@ sumtotalp: number=0;
 profit: number=0;
 
 ngOnInit(): void {
- 
-  this.loadInvoice(this.fromdate,this.todate);
+  this.GetCustomers();
+  this.loadInvoice(this.fromdate,this.todate,this.custno);
 }
-loadInvoice(fromdate:Date,todate:Date){
 
-  const paramdata={"fromdate": fromdate,"todate":todate};
+GetCustomers() {
+  this.userdata.customer().subscribe((res) => {
+
+    this.mastercustomer = res;
+
+  })
+}
+loadInvoice(fromdate:Date,todate:Date,custno:any){
+
+  const paramdata={"fromdate": fromdate,"todate":todate,"custno":custno};
   console.log("from load invoice",paramdata)
  // console.log(fromdate.getMonth(),fromdate.getDate(),fromdate.getFullYear())
  
@@ -64,7 +72,7 @@ invoiceremove(invoiceno:number){
       result = res;
       if (result.result == 'pass') {
         this.alert.success('Removed Successfully.', 'Remove Invoice')
-        this.loadInvoice(this.fromdate,this.todate);
+        this.loadInvoice(this.fromdate,this.todate,this.custno);
       } else {
         this.alert.error('Failed to Remove.', 'Invoice');
       }

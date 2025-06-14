@@ -47,10 +47,12 @@ export class ProductComponent {
 
   }
   async SetEditInfo(productno:any){
+    console.log(productno)
     await this.userdata.productbyID(productno).subscribe(res => {
       let editdata: any;
 
       editdata = res;
+      console.log(editdata)
       if (editdata != null) {
         this.productform.setValue({
           productno: editdata[0].productno, name: editdata[0].name, description: editdata[0].description,

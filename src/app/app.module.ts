@@ -25,7 +25,8 @@ import { PurchaselistingComponent } from './MyComponent/purchaselisting/purchase
 import { PurchaseComponent } from './MyComponent/purchase/purchase.component';
 import { SupplierlistingComponent } from './MyComponent/supplierlisting/supplierlisting.component';
 import { SupplierComponent } from './MyComponent/supplier/supplier.component';
-
+import {AgGridModule} from 'ag-grid-angular';
+import { GridtestComponent } from './MyComponent/gridtest/gridtest.component'
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { SupplierComponent } from './MyComponent/supplier/supplier.component';
     PurchaselistingComponent,
     PurchaseComponent,
     SupplierlistingComponent,
-    SupplierComponent
+    SupplierComponent,
+    GridtestComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +59,7 @@ import { SupplierComponent } from './MyComponent/supplier/supplier.component';
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
     NgSelectModule,
-    
+    AgGridModule,
   ],
   providers: [provideHttpClient()],
   bootstrap: [AppComponent]
